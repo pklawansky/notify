@@ -123,7 +123,7 @@
                 }
                 else if (val.type === "select") {
                     html += '<select id="popupInput_' + val.name + '" name="' + val.name + '" ' + val.htmlProperties + ' >';
-                    //if selected val.value => selected
+
                     $.each(val.selectOptions, function (idxO, valO) {
                         var _val = valO.value;
                         var _lab = valO.label;
@@ -216,49 +216,6 @@
         });
 
         allformitems.change();
-
-        ////setup input change event
-        //inputs.change(function () {
-        //    var inp = $(this);
-        //    var _name = inp.attr("name");
-        //    var _value = inp.val();
-
-        //    $.each(inputOptions, function (idx, val) {
-        //        if (val.name === _name) {
-        //            val.value = _value;
-        //        }
-        //    });
-        //});
-
-        ////setup textarea change event
-        //textareas.change(function () {
-        //    var inp = $(this);
-        //    var _name = inp.attr("name");
-        //    var _value = inp.val();
-
-        //    $.each(inputOptions, function (idx, val) {
-        //        if (val.name === _name) {
-        //            val.value = _value;
-        //        }
-        //    });
-        //});
-
-        ////setup select change event
-        //selects.change(function () {
-        //    var inp = $(this);
-        //    var _name = inp.attr("name");
-        //    var _value = inp.val();
-
-        //    $.each(inputOptions, function (idx, val) {
-        //        if (val.name === _name) {
-        //            val.value = _value;
-        //        }
-        //    });
-        //});
-
-        //selects.change();
-        //inputs.change();
-        //textareas.change();
 
         var popupOKButton = popupDivContentDiv.find("#" + popupDivContentDivOKButtonId);
         var popupCancelButton = popupDivContentDiv.find("#" + popupDivContentDivCancelButtonId);
