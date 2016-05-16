@@ -7,4 +7,8 @@ Add file to scripts directory.
 Initialise popup by calling notify method.
 
 ### Example
+Example1: Standard alert 
+```
 notify({ text: "Hello world!", type: notifyTypeAlert });
+```
+
