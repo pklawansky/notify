@@ -1,4 +1,4 @@
-﻿var notify = function (options, functionOK, functionCancel, functionInitialised) {
+var notify = function (options, functionOK, functionCancel, functionInitialised) {
 
     //configure for your website if it has a navbar on top
     var maxTopOffsetPixels = 100;
@@ -155,10 +155,12 @@
 
         //append the inputs
         html += "<p>";
-        html += '<input type="button" id="' + popupDivContentDivOKButtonId + '" class="' + popupDivContentDivButtonClass + '" value="' + buttonOptions.ok + '"/>';
+        if (buttonOptions.ok != null && buttonOptions.ok != "") {
+            html += '<input type="button" id="' + popupDivContentDivOKButtonId + '" class="' + popupDivContentDivButtonClass + '" value="' + buttonOptions.ok + '"/>';
+        }
 
         //if form or confirm, requires cancel button
-        if (type === notifyTypeForm || type === notifyTypeConfirm || type === notifyTypeCustom) {
+        if (buttonOptions.cancel != null && buttonOptions.cancel != "" && (type === notifyTypeForm || type === notifyTypeConfirm || type === notifyTypeCustom)) {
             html += '<input type="button" id="' + popupDivContentDivCancelButtonId + '" class="' + popupDivContentDivButtonClass + '" value="' + buttonOptions.cancel + '"/>';
         }
         html += "</p>";
@@ -304,10 +306,10 @@
             buttonOptions = { ok: "OK", cancel: "Cancel" };
         }
         else {
-            if (buttonOptions.ok === undefined || buttonOptions.ok === null || buttonOptions.ok === "") {
+            if (buttonOptions.ok === undefined) {
                 buttonOptions.ok = "OK";
             }
-            if (buttonOptions.cancel === undefined || buttonOptions.cancel === null || buttonOptions.cancel === "") {
+            if (buttonOptions.cancel === undefined) {
                 buttonOptions.cancel = "Cancel";
             }
         }
