@@ -23,14 +23,16 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
     var popupDivContentDivValidationClass = "popupDivContentDivValidationMessage";
     var popupDivContentDivCustomHtmlId = "popupDivContentDivCustomHtml";
 
+    //if popup exists already, delete and add new
+    var popupDiv = $("#" + popupDivId);
+    if (popupDiv.length > 0) {
+        popupDiv.remove();
+    }
+
     //function renders all the processed data into the popup
     var renderPopup = function (text, type, customHtml, buttonOptions, inputOptions, functionOK, functionCancel) {
 
-        //if popup exists already, delete and add new
-        var popupDiv = $("#" + popupDivId);
-        if (popupDiv.length > 0) {
-            popupDiv.remove();
-        }
+
 
         //initialise popup containers
         var html = '<div id="' + popupDivId + '">';
@@ -86,7 +88,6 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
         popupDivMask.css("opacity", "0.5");
 
         popupDivContent.css("background-color", "white");
-        //popupDivContent.css("max-height", "90%");
         popupDivContent.css("overflow", "auto");
         popupDivContent.css("padding", "10px");
         popupDivContent.css("border-top", "3px solid black");
