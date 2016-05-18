@@ -115,3 +115,9 @@ notify({
   //initialised, can do logic on inputs if necessary, styling or bind events...
 });
 ```
+
+**Example 6: Close popup**
+The popup can be closed in code by calling the following function
+```
+notify();
+```
