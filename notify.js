@@ -1,3 +1,10 @@
+/*  notify.js
+*   Original author Phillip Klawansky
+*   Use of this control is not restricted provided this comment remains in this file for reference
+*   https://github.com/pklawansky/notify
+*   Published 2016-05-16
+*/
+
 var notify = function (options, functionOK, functionCancel, functionInitialised) {
 
     //configure for your website if it has a navbar on top
