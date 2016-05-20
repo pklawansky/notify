@@ -361,12 +361,13 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
         renderPopup(text, type, customHtml, buttonOptions, inputOptions, functionOK, functionCancel, functionInitialised);
     };
 
-    //treats the popup like a standard alert() function, otherwise parse the options in next
-    if (typeof (options) === "string") {
-        notifyWithOptions({ text: options, type: notifyTypeAlert }, functionOK, functionCancel, functionInitialised);
-    }
-    else if (typeof (options) === "object") {
+    //parse options into object to help generate view
+    if (typeof (options) === "object") {
         notifyWithOptions(options, functionOK, functionCancel, functionInitialised);
+    }
+    else if (options != undefined && options != null) {
+        //treats the popup like a standard alert() function
+        notifyWithOptions({ text: options, type: notifyTypeAlert }, functionOK, functionCancel, functionInitialised);
     }
 };
 
