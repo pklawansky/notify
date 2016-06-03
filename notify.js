@@ -100,17 +100,22 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
         popupDivContent.css("right", 0);
         popupDivContent.css("width", "auto");
 
-        popupDivContentDiv.css("margin", "auto");
-        popupDivContentDiv.css("text-align", "center");
+        if (type !== notifyTypeCustom) {
+            popupDivContentDiv.css("margin", "auto");
+            popupDivContentDiv.css("text-align", "center");
+        }
 
         html = '<h1 id="' + popupDivContentDivHeading + '">' + text + "</h1>";
         popupDivContentDiv.append(html);
 
         //heading/alert
-        var heading = popupDivContentDiv.find("#popupDivContentDivHeading");
+        var heading = popupDivContentDiv.find("#" + popupDivContentDivHeading);
         heading.css("margin", "10px");
         heading.css("margin-top", "0");
         heading.css("border-bottom", "3px solid #f0f0f0");
+        if (text === undefined || text === null || text === "") {
+            heading.css("display", "none");
+        }
 
         html = "";
         //if popup is a form box, it contains inputs, otherwise it is just a box with buttons
@@ -247,7 +252,7 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
 
         //popup is initialised
         if (functionInitialised != undefined && functionInitialised != null && typeof (functionInitialised) === "function") {
-            functionInitialised();
+            functionInitialised(popupDivCustomHtml, popupOKButton, popupCancelButton);
         }
 
         //setting up event for cancel button click
@@ -278,6 +283,13 @@ var notify = function (options, functionOK, functionCancel, functionInitialised)
                 popupDiv.remove();
             }
         });
+
+        if (popupCancelButton.length > 0) {
+            popupCancelButton.focus();
+        }
+        else if (popupOKButton.length > 0) {
+            popupOKButton.focus();
+        }
 
         //sets max height of the container on window resize
         var resizeWindow = function () {
