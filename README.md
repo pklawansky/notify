@@ -55,13 +55,17 @@ var html = '<h1>This is custom html</h1>';
 notify({
   text: "Custom Heading",
   type: notifyTypeCustom,
-  customHtml: html
+  customHtml: html,
+  buttonOptions: { ok: null, cancel: "Close" }
 }, function() {
-  //if "OK" was clicked...
+  //if "OK" was clicked... will not hit this as ok button is hidden with buttonOptions: { ok: null, ... }
 }, function() {
   //if "Cancel" was clicked...
-}, function() {
+}, function(popupCustomHtmlContainer, popupOKButton, popupCancelButton) {
   //popup initialised, code can go here...
+  //popupCustomHtmlContainer holds the customHtml
+  //popupOKButton is a handle to the ok button if used,
+  //popupCancelButton is a handle to the cancel button if used
 });
 ```
 
